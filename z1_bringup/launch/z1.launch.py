@@ -174,6 +174,8 @@ def generate_launch_description():
             get_package_prefix("z1_description"), "share"
         )
 
+    os.environ["GZ_SIM_RESOURCE_PATH"] = os.path.join(get_package_prefix("z1_description"), "share")
+
     LIB_ENV_VAR = "IGN_GAZEBO_SYSTEM_PLUGIN_PATH"
     if LIB_ENV_VAR in os.environ:
         os.environ[LIB_ENV_VAR] += ":/opt/ros/humble/lib"
@@ -206,7 +208,7 @@ def generate_launch_description():
 
     declared_arguments.append(
         DeclareLaunchArgument(
-            "with_gripper", default_value="true", description="Use the gripper?"
+            "with_gripper", default_value="False", description="Use the gripper?"
         )
     )
 
@@ -221,7 +223,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "sim_ignition",
-            default_value="true",
+            default_value="False",
             description="Launch simulation in Ignition Gazebo?"
         )
     )

@@ -13,19 +13,19 @@
 
 namespace unitree::z1 {
 
-class HardwareInterface : public hardware_interface::SystemInterface {
+class Z1HwInterface : public hardware_interface::SystemInterface {
 public:
     using Vec6 = Eigen::Vector<double, 6>;  // NOLINT: magic number
 
-    RCLCPP_SHARED_PTR_DEFINITIONS(HardwareInterface)
+    RCLCPP_SHARED_PTR_DEFINITIONS(Z1HwInterface)
 
-    HardwareInterface()           = default;
-    ~HardwareInterface() override = default;
+    Z1HwInterface()           = default;
+    ~Z1HwInterface() override = default;
 
-    HardwareInterface(const HardwareInterface&)             = delete;
-    HardwareInterface(const HardwareInterface&&)            = delete;
-    HardwareInterface& operator=(const HardwareInterface&)  = delete;
-    HardwareInterface& operator=(const HardwareInterface&&) = delete;
+    Z1HwInterface(const Z1HwInterface&)             = delete;
+    Z1HwInterface(const Z1HwInterface&&)            = delete;
+    Z1HwInterface& operator=(const Z1HwInterface&)  = delete;
+    Z1HwInterface& operator=(const Z1HwInterface&&) = delete;
 
 
     hardware_interface::CallbackReturn on_configure(

@@ -9,7 +9,7 @@
 // |____/ \___|\___|_|\__,_|_|  \__,_|\__|_|\___/|_| |_|___/
 //
 
-using unitree::z1::HardwareInterface;
+using unitree::z1::Z1HwInterface;
 
 //  ____   ____ _     ____ ____  ____    _     _  __       ____           _
 // |  _ \ / ___| |   / ___|  _ \|  _ \  | |   (_)/ _| ___ / ___|   _  ___| | ___
@@ -18,7 +18,7 @@ using unitree::z1::HardwareInterface;
 // |_| \_\\____|_____\____|_|   |_|     |_____|_|_|  \___|\____\__, |\___|_|\___|
 //                                                             |___/
 hardware_interface::CallbackReturn
-HardwareInterface::on_configure(const rclcpp_lifecycle::State& prev_state) {
+Z1HwInterface::on_configure(const rclcpp_lifecycle::State& prev_state) {
     RCLCPP_DEBUG(get_logger(), "calling on_configure()");
     if (hardware_interface::SystemInterface::on_configure(prev_state)
         != hardware_interface::CallbackReturn::SUCCESS) {
@@ -31,7 +31,7 @@ HardwareInterface::on_configure(const rclcpp_lifecycle::State& prev_state) {
 }
 
 hardware_interface::CallbackReturn
-HardwareInterface::on_cleanup(const rclcpp_lifecycle::State& prev_state) {
+Z1HwInterface::on_cleanup(const rclcpp_lifecycle::State& prev_state) {
     RCLCPP_DEBUG(get_logger(), "calling on_cleanup()");
     if (hardware_interface::SystemInterface::on_cleanup(prev_state)
         != hardware_interface::CallbackReturn::SUCCESS) {
@@ -44,7 +44,7 @@ HardwareInterface::on_cleanup(const rclcpp_lifecycle::State& prev_state) {
 }
 
 hardware_interface::CallbackReturn
-HardwareInterface::on_shutdown(const rclcpp_lifecycle::State& prev_state) {
+Z1HwInterface::on_shutdown(const rclcpp_lifecycle::State& prev_state) {
     RCLCPP_DEBUG(get_logger(), "calling on_shutdown()");
     if (hardware_interface::SystemInterface::on_shutdown(prev_state)
         != hardware_interface::CallbackReturn::SUCCESS) {
@@ -56,7 +56,7 @@ HardwareInterface::on_shutdown(const rclcpp_lifecycle::State& prev_state) {
 }
 
 hardware_interface::CallbackReturn
-HardwareInterface::on_activate(const rclcpp_lifecycle::State& prev_state) {
+Z1HwInterface::on_activate(const rclcpp_lifecycle::State& prev_state) {
     RCLCPP_DEBUG(get_logger(), "calling on_activate()");
     if (hardware_interface::SystemInterface::on_activate(prev_state)
         != hardware_interface::CallbackReturn::SUCCESS) {
@@ -71,7 +71,7 @@ HardwareInterface::on_activate(const rclcpp_lifecycle::State& prev_state) {
  * This function should deactivate the hardware.
  */
 hardware_interface::CallbackReturn
-HardwareInterface::on_deactivate(const rclcpp_lifecycle::State& prev_state) {
+Z1HwInterface::on_deactivate(const rclcpp_lifecycle::State& prev_state) {
     RCLCPP_DEBUG(get_logger(), "calling on_deactivate()");
     if (hardware_interface::SystemInterface::on_deactivate(prev_state)
         != hardware_interface::CallbackReturn::SUCCESS) {
@@ -87,7 +87,7 @@ HardwareInterface::on_deactivate(const rclcpp_lifecycle::State& prev_state) {
  * This function should handle errors.
  */
 hardware_interface::CallbackReturn
-HardwareInterface::on_error(const rclcpp_lifecycle::State& prev_state) {
+Z1HwInterface::on_error(const rclcpp_lifecycle::State& prev_state) {
     RCLCPP_DEBUG(get_logger(), "called on_error()");
     if (hardware_interface::SystemInterface::on_error(prev_state)
         != hardware_interface::CallbackReturn::SUCCESS) {
@@ -107,7 +107,7 @@ HardwareInterface::on_error(const rclcpp_lifecycle::State& prev_state) {
 //
 
 hardware_interface::CallbackReturn
-HardwareInterface::on_init(const hardware_interface::HardwareInfo& hw_info) {
+Z1HwInterface::on_init(const hardware_interface::HardwareInfo& hw_info) {
 #ifdef SHOW_DEBUG_MESSAGES
     rclcpp::Logger logger = get_logger();
     logger.set_level(rclcpp::Logger::Level::Debug);
@@ -125,33 +125,33 @@ HardwareInterface::on_init(const hardware_interface::HardwareInfo& hw_info) {
 }
 
 std::vector<hardware_interface::StateInterface>
-HardwareInterface::export_state_interfaces() {
+Z1HwInterface::export_state_interfaces() {
     std::vector<hardware_interface::StateInterface> state_interfaces;
     // TODO
     return state_interfaces;
 };
 
 std::vector<hardware_interface::CommandInterface>
-HardwareInterface::export_command_interfaces() {
+Z1HwInterface::export_command_interfaces() {
     std::vector<hardware_interface::CommandInterface> command_interfaces;
     // TODO
     return command_interfaces;
 }
 
 hardware_interface::return_type
-HardwareInterface::
+Z1HwInterface::
         read(const rclcpp::Time& /* time */, const rclcpp::Duration& /* period */) {
     return hardware_interface::return_type::OK;
 }
 
 hardware_interface::return_type
-HardwareInterface::
+Z1HwInterface::
         write(const rclcpp::Time& /* time */, const rclcpp::Duration& /* period */) {
     return hardware_interface::return_type::OK;
 }
 
 hardware_interface::return_type
-HardwareInterface::perform_command_mode_switch(
+Z1HwInterface::perform_command_mode_switch(
         const std::vector<std::string>& start_interfaces,
         const std::vector<std::string>& /* stop_interfaces */
 ) {
@@ -194,5 +194,5 @@ to_lower_string(std::string& str) {
 #include <pluginlib/class_list_macros.hpp>
 
 PLUGINLIB_EXPORT_CLASS(
-        unitree::z1::HardwareInterface, hardware_interface::SystemInterface
+        unitree::z1::Z1HwInterface, hardware_interface::SystemInterface
 );
