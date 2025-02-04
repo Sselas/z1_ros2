@@ -1,0 +1,29 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: z1_description
+    relative_path: urdf/z1.urdf.xacro
+  srdf:
+    relative_path: config/z1_description.srdf
+  package_settings:
+    author_name: Tom Humbertclaude
+    author_email: tom.humbertclaude@enseirb-matmeca.fr
+    generated_timestamp: 1738689925
+  control_xacro:
+    command:
+      - position
+      - effort
+    state:
+      - position
+      - velocity
+      - effort
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+      - effort
+    state:
+      - position
+      - velocity
+      - effort
