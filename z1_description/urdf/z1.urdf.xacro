@@ -116,7 +116,7 @@
     </link>
 
     <joint name="joint3" type="revolute">
-        <origin rpy="0 -0.1 0" xyz="-0.35 0 0" />
+        <origin rpy="0 0 0" xyz="-0.35 0 0" />
         <parent link="link02" />
         <child link="link03" />
         <axis xyz="0 1 0" />
@@ -330,9 +330,8 @@
     <xacro:if value="$(arg sim_ignition)">
         <gazebo reference="world" />
         <gazebo>
-            <!-- <plugin filename="libign_ros2_control-system.so" name="ign_ros2_control::IgnitionROS2ControlPlugin"> -->
-            <plugin filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-
+            <plugin filename="libign_ros2_control-system.so"
+                name="ign_ros2_control::IgnitionROS2ControlPlugin">
                 <parameters> $(arg controllers) </parameters>
                 <robot_param> robot_description </robot_param>
                 <robot_param_node> robot_state_publisher </robot_param_node>
