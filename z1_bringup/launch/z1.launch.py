@@ -30,7 +30,9 @@ def launch_setup(context, *args, **kwargs):
     starting_controller = LaunchConfiguration("starting_controller")
     sim_ignition = LaunchConfiguration("sim_ignition")
 
-    use_sim_time = (sim_ignition.perform(context) == "true")
+    use_sim_time = LaunchConfiguration("use_sim_time")
+    if use_sim_time:
+        print(f"*\n**\n***\n****\n*****\n******\n*******\n********\n*********\n**********\nUSING SIM TIME : {use_sim_time}\n**********\n*********\n********\n*******\n******\n*****\n****\n***\n**\n*")
 
     # Conditions that tells wether the robot is simulated or not
     # For now it is easy, since only ignition is supported
@@ -206,7 +208,15 @@ def generate_launch_description():
 
     declared_arguments.append(
         DeclareLaunchArgument(
-            "with_gripper", default_value="true", description="Use the gripper?"
+            "with_gripper", default_value="false", description="Use the gripper?"
+        )
+    )
+
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "use_sim_time",
+            default_value="true",
+            description="Use simulation time"
         )
     )
 
@@ -227,7 +237,7 @@ def generate_launch_description():
     )
 
     declared_arguments.append(
-        DeclareLaunchArgument("rviz", default_value="true", description="Launch RViz?")
+        DeclareLaunchArgument("rviz", default_value="false", description="Launch RViz?")
     )
 
     declared_arguments.append(

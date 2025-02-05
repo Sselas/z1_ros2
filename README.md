@@ -33,7 +33,7 @@ This repository contains different sub-packages:
 
 To test the robot in the simulation environment, you can directly call the command
 ```
-ros2 launch z1_bringup z1.launch.py sim_ignition:=true with_gripper:=false
+ros2 launch z1_bringup z1.launch.py
 ```
 More details on how to launch the robots can be found in the `z1_bringup` package [README](z1_bringup/README.md).
 
@@ -41,7 +41,13 @@ More details on how to launch the robots can be found in the `z1_bringup` packag
 
 Launching the RViz and MoveIt! simulation is achieved with with the command :
 ```
-ros2 launch z1_moveit_config demo.launch.py
+ros2 launch z1_moveit_config custom.launch.py
+```
+
+## Forcing sim_time
+
+```
+ros2 param set /move_group use_sim_time true
 ```
 
 
