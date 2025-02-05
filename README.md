@@ -37,6 +37,13 @@ ros2 launch z1_bringup z1.launch.py sim_ignition:=true with_gripper:=false
 ```
 More details on how to launch the robots can be found in the `z1_bringup` package [README](z1_bringup/README.md).
 
+## Testing the robot
+
+Launching the RViz and MoveIt! simulation is achieved with with the command :
+```
+ros2 launch z1_moveit_config demo.launch.py
+```
+
 
 ## Contributing
 
