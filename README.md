@@ -33,7 +33,7 @@ This repository contains different sub-packages:
 
 To test the robot in the simulation environment, you can directly call the command
 ```
-ros2 launch z1_bringup z1.launch.py sim_ignition:=true
+ros2 launch z1_bringup z1.launch.py sim_ignition:=true with_gripper:=false
 ```
 More details on how to launch the robots can be found in the `z1_bringup` package [README](z1_bringup/README.md).
 
